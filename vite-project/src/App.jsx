@@ -1,7 +1,10 @@
+import React from "react";
 import Hero from "./components/Hero";
-import { ProbatProvider } from "@probat/react";
+import { ProbatProvider, withExperiment } from "@probat/react";
 
-export default function App() {
+const __PROBAT_COMPONENT_PATH__ = "vite-project/src/App.jsx";
+
+const App = ({ probat }) => {
   return (
     <ProbatProvider 
       apiBaseUrl="https://gushi.onrender.com"
@@ -15,4 +18,8 @@ export default function App() {
       </div>
     </ProbatProvider>
   );
-}
+};
+
+export default withExperiment(App, {
+    componentPath: __PROBAT_COMPONENT_PATH__
+});
